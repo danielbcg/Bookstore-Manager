@@ -1,5 +1,6 @@
 package com.danielbony.bockstoremanager.service;
 
+import com.danielbony.bockstoremanager.dto.BookDTO;
 import com.danielbony.bockstoremanager.dto.MessageResponseDTO;
 import com.danielbony.bockstoremanager.entity.Book;
 import com.danielbony.bockstoremanager.repository.BookRepository;
@@ -19,8 +20,16 @@ public class BookService {
     }
 
     @PostMapping
-    public MessageResponseDTO create(Book book){
-        Book savedBook = bookRepository.save(book);
+    public MessageResponseDTO create(BookDTO bookDTO){
+        Book bookToSave = Book.builder()
+                .name(bookDTO.getName())
+                .pages(bookDTO.getPages())
+                .chapters(bookDTO.getChapters())
+                .author(bookDTO.getAuthor())
+                .build();
+
+        //se n tiver o builder do bookToSave, n da pra salvar bookDTO
+        Book savedBook = bookRepository.save(bookToSave);
         return MessageResponseDTO.builder()
                 .message("Book created with id: "+ savedBook.getId())
                 .build();
