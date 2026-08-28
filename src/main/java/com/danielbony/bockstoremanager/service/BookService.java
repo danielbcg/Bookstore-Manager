@@ -26,15 +26,17 @@ public class BookService {
     public MessageResponseDTO create(BookDTO bookDTO){
         Book bookToSave =
 
-                // antes do bookMapper.toModel(bookDTO) era assim,
-                // mas n puxava o dto, por causa do objeto autor
+                /*
+                 antes do bookMapper.toModel(bookDTO) era assim,
+                 mas n puxava o dto, por causa do objeto autor
 
-                //Book.builder()
-                //.name(bookDTO.getName())
-                //.pages(bookDTO.getPages())
-                //.chapters(bookDTO.getChapters())
-                //.author(bookDTO.getAuthor())
-                //.build();
+                Book.builder()
+                .name(bookDTO.getName())
+                .pages(bookDTO.getPages())
+                .chapters(bookDTO.getChapters())
+                .author(bookDTO.getAuthor())
+                .build();
+                */
 
                 bookMapper.toModel(bookDTO);
 
