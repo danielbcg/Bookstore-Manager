@@ -24,7 +24,19 @@ public class BookService {
 
     @PostMapping
     public MessageResponseDTO create(BookDTO bookDTO){
-        Book bookToSave = bookMapper.toModel(bookDTO);
+        Book bookToSave =
+
+                // antes do bookMapper.toModel(bookDTO) era assim,
+                // mas n puxava o dto, por causa do objeto autor
+
+                //Book.builder()
+                //.name(bookDTO.getName())
+                //.pages(bookDTO.getPages())
+                //.chapters(bookDTO.getChapters())
+                //.author(bookDTO.getAuthor())
+                //.build();
+
+                bookMapper.toModel(bookDTO);
 
         //se n tiver o builder do bookToSave, n da pra salvar bookDTO
         Book savedBook = bookRepository.save(bookToSave);
