@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Service
 public class BookService {
 
-    private final BookMapper bookMapper = BookMapper.INSTANCE;
+    private final BookMapper bookMapper = BookMapper.INSTANCE; //cria variavel mapper
 
     private BookRepository bookRepository;
 
@@ -40,7 +40,6 @@ public class BookService {
 
                 bookMapper.toModel(bookDTO);
 
-        //se n tiver o builder do bookToSave, n da pra salvar bookDTO
         Book savedBook = bookRepository.save(bookToSave);
         return MessageResponseDTO.builder()
                 .message("Book created with id: "+ savedBook.getId())
