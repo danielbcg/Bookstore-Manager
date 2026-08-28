@@ -1,5 +1,6 @@
 package com.danielbony.bockstoremanager.dto;
 
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -20,7 +21,7 @@ public class AuthorDTO {
     @Size(max = 100)
     private String name;
 
-    @NotBlank
-    @Size(max = 130)
+    @NotNull
+    @Max(100)
     private Integer age;
 }
