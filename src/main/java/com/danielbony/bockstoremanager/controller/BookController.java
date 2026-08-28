@@ -25,6 +25,8 @@ public class BookController {
 
     @PostMapping
     public MessageResponseDTO create(@RequestBody @Valid BookDTO bookDTO){
+                                            //o @Valid serve pra validar as restriçoes
+                                            //do DTO (ex: @notblank, @notnull, etc)
         return bookService.create(bookDTO);
     }
 }
